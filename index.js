@@ -8,13 +8,19 @@ const { green, blue } = require("./src/helper/constants");
 // Importing Routes
 require("./src/routes/access_route")(app);
 require("./src/routes/boatshow_route")(app);
-
-// Create HTTP server
+require("./src/routes/country_route")(app);
+require("./src/routes/currency_route")(app);
+require("./src/routes/details_modele_route")(app);
+require("./src/routes/engines_route")(app);
+require("./src/routes/modele_route")(app);
+require("./src/routes/note_prospect_route")(app);
+require("./src/routes/options_details_modele_route")(app);
+require("./src/routes/options_modele_route")(app);
+require("./src/routes/prospects_route")(app);
+require("./src/routes/wishlist_route")(app);
 
 const server = http.createServer(app);
-// Initialize Socket.io
-// const io = ;
-// require("./socket")(io);
+
 
 // PORT
 const PORT = process.env.PORT || 3000;
