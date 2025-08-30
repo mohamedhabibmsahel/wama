@@ -1,4 +1,5 @@
 const { sequelize, Sequelize } = require("../../db.config");
+const { Engine } = require("./engines_model");
 
 const Modele = sequelize.define("modele", {
   id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
@@ -11,5 +12,7 @@ const Modele = sequelize.define("modele", {
   tableName: "modele",
   timestamps: true,
 });
+Modele.hasMany(Engine, { foreignKey: "modeleId", as: "engines" });
+
 
 module.exports = { Modele };

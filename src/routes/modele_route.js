@@ -9,6 +9,7 @@ module.exports = (app) => {
   router.get("/:id", modeleController.getModeleById);
   router.put("/:id", modeleController.updateModele);
   router.delete("/:id", modeleController.deleteModele);
-  
+  router.get("/:id/engines", modeleController.getModelEngines);
+
   app.use("/modeles", router);
 };

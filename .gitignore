@@ -1,7 +1,7 @@
 # Dependency directories
-node_modules/
-jspm_packages/
-public/
+/node_modules
+/jspm_packages
+/public
 # Environment variables
 .env
 .env.local

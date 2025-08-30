@@ -18,13 +18,17 @@ const Access = sequelize.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
-    username: {
+    firstname: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    lastname: {
       type: Sequelize.STRING,
       allowNull: false,
     },
     titre: {
       type: Sequelize.ENUM("admin", "agent", "client"),
-      defaultValue: "client",
+      defaultValue: "agent",
     },
     level: {
       type: Sequelize.INTEGER,

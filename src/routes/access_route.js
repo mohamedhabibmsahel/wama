@@ -3,7 +3,8 @@
 module.exports = (app) => {
   const accessController = require("../controllers/access_controller");
   var router = require("express").Router();
-
+router.post("/signup", accessController.signup);
+router.post("/signin", accessController.signin);
   router.post("/", accessController.createAccess);
   router.get("/", accessController.getAllAccess);
   router.get("/:id", accessController.getAccessById);

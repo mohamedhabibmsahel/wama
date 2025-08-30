@@ -1,8 +1,8 @@
-const { Engines } = require("../models/engines_model");
+const { Engine  } = require("../models/engines_model");
 
 exports.createEngine = async (req, res) => {
   try {
-    const engine = await Engines.create(req.body);
+    const engine = await Engine.create(req.body);
     return res.status(201).json(engine);
   } catch (err) {
     console.error(err);
@@ -12,7 +12,7 @@ exports.createEngine = async (req, res) => {
 
 exports.getAllEngines = async (req, res) => {
   try {
-    const engines = await Engines.findAll();
+    const engines = await Engine.findAll();
     res.json(engines);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -21,7 +21,7 @@ exports.getAllEngines = async (req, res) => {
 
 exports.getEngineById = async (req, res) => {
   try {
-    const engine = await Engines.findByPk(req.params.id);
+    const engine = await Engine.findByPk(req.params.id);
     if (!engine) return res.status(404).json({ error: "Engine not found" });
     res.json(engine);
   } catch (err) {
@@ -31,7 +31,7 @@ exports.getEngineById = async (req, res) => {
 
 exports.updateEngine = async (req, res) => {
   try {
-    const engine = await Engines.findByPk(req.params.id);
+    const engine = await Engine.findByPk(req.params.id);
     if (!engine) return res.status(404).json({ error: "Engine not found" });
     
     await engine.update(req.body);
@@ -43,7 +43,7 @@ exports.updateEngine = async (req, res) => {
 
 exports.deleteEngine = async (req, res) => {
   try {
-    const engine = await Engines.findByPk(req.params.id);
+    const engine = await Engine.findByPk(req.params.id);
     if (!engine) return res.status(404).json({ error: "Engine not found" });
     
     await engine.destroy();

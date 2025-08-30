@@ -1,5 +1,31 @@
 const { Modele } = require("../models/modele_model");
+const { Engine } = require("../models/engines_model");
 
+
+
+
+// Get engines for a specific model
+exports.getModelEngines = async (req, res) => {
+  try {
+    const modele = await Modele.findByPk(req.params.id, {
+      include: [
+        {
+          model: Engine,
+          as: "engines", // correspond à l'alias défini dans Modele.hasMany
+        },
+      ],
+    });
+
+    if (!modele) {
+      return res.status(404).json({ error: "Model not found" });
+    }
+
+    res.json(modele.engines); // retourne uniquement la liste des moteurs
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+};
 exports.createModele = async (req, res) => {
   try {
     const modele = await Modele.create(req.body);
